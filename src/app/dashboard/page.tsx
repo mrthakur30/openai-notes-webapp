@@ -21,9 +21,7 @@ const DashboardPage = async (props: Props) => {
     .where(eq($notes.userId, userId!));
 
 
-  console.log('====================================');
-  console.log(notes);
-  console.log('====================================');
+ 
 
   return (
     <>
