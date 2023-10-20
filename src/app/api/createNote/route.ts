@@ -4,7 +4,6 @@ import { generateImage, generateImagePrompt } from "@/lib/openai";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
-export const runtime = 'edge'
 
 export async function POST(req: Request){
     const {userId} = auth() ;
@@ -12,6 +11,9 @@ export async function POST(req: Request){
         return new NextResponse('unautorized',{status: 401})
     }
     const body = await req.json();
+    console.log('====================================');
+    console.log(body);
+    console.log('====================================');
     const {name} = body ;
 
     const image_description = await generateImagePrompt(name);
@@ -20,6 +22,7 @@ export async function POST(req: Request){
          status: 500,
        })
     }
+
     
     const img_url = await generateImage(image_description);
     if(!img_url){
