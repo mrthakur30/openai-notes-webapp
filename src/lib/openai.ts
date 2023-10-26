@@ -7,6 +7,9 @@ const config = new Configuration({
 const openai = new OpenAIApi(config);
 
 export async function generateImagePrompt(name: string) {
+  console.log('=================1===================');
+  console.log(name);
+  console.log('=================1===================');
   try {
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
@@ -24,14 +27,14 @@ export async function generateImagePrompt(name: string) {
     });
     
     const data = await response.json();
-    console.log('====================================');
+    console.log('===============2=====================');
     console.log(data);
-    console.log('====================================');
+    console.log('===============2=====================');
     const image_description = data.choices[0].message.content;
     
-    console.log('====================================');
+    console.log('================3====================');
     console.log(image_description);
-    console.log('====================================');
+    console.log('================3====================');
     return image_description as string;
   } catch (error) {
     console.log(error);
