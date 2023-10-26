@@ -6,7 +6,7 @@ import { getAuth } from "@clerk/nextjs/server";
 
 import { NextResponse } from "next/server";
 
-
+export const runtime = "edge";
 export async function POST(req: Request) {
   const { userId } = auth();
   if (!userId) {
